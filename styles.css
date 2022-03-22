@@ -1,0 +1,36 @@
+body {
+    margin: 100px;
+}
+
+.values-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-width: 2px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: black;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-div {
+    display: flex;
+    gap: 15px;
+    flex: 1 0 auto;
+    max-width: 200px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.values-form input {
+    min-width: 0;
+    width: 60px;
+    text-align: end;
+}
+
+#submit {
+    width: 200px;
+    text-align: center;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./scripts.js" defer></script>
+    <title>Daily Profit Calculator</title>
+    
+</head>
+<body>
+    <div class="container">
+
+        <form class="values-form">
+            <div class="input-div">
+                <label for="balance">Titano Balance: </label>
+                <input type="number" id="balance" name="balance" min="0" value="0">
+            </div>
+
+            <div class="input-div">
+                <label for="days">Number of Days: </label>
+                <input type="number" id="days" name="days" min="0" value="1">
+            </div>
+
+            <div class="input-div">
+                <label for="price">Current price: </label>
+                <input type="number" id="price" name="price">    
+            </div class="input-div">
+
+            <div class="input-div">
+                <label for="fee">Sell Fee: </label>
+                <input type="number" id="fee" name="fee" value="18">
+            </div class="input-div">
+
+            <div class="input-div">
+                <label for="tax">Tax Percentage: </label>
+                <input type="number" id="tax" name="tax" value="0">
+            </div>
+
+            <div class="input-div">
+                <label for="percentage">Percentage: </label>
+                <input type="number" id="percentage" name="percentage" value="20">
+            </div>
+
+            <div class="input-div">
+                <input type="submit" value="Submit" id="submit">
+            </div>
+
+        </form>
+
+        <div id="results">
+            
+        </div>
+
+    </div>
+</body>
+</html>
