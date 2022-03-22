@@ -2,7 +2,7 @@ body {
     margin: 100px;
 }
 
-.values-form {
+.values-div {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -24,13 +24,25 @@ body {
     align-items: center;
 }
 
-.values-form input {
+.values-div label {
+    flex-shrink: 0;
+}
+
+.values-div input {
     min-width: 0;
-    width: 60px;
+    width: 100%;
     text-align: end;
 }
 
 #submit {
     width: 200px;
     text-align: center;
+}
+
+#results {
+    margin-top: 20px;
+    border-width: 2px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: black;
 }
