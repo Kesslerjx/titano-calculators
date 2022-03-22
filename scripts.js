@@ -18,6 +18,10 @@ let percentageValue = parseInt(percentage.value);
 const submitButton = document.querySelector('#submit');
 submitButton.addEventListener('click', submit);
 
+//Setup reset button
+const resetButton = document.querySelector('#reset');
+resetButton.addEventListener('click', reset);
+
 
 /* FUNCTIONS */
 
@@ -33,8 +37,13 @@ function submit() {
     }
 }
 
+function reset() {
+    console.log("User is resetting everything");
+}
+
 //Check each input to ensure they're valid
 function checkInputs() {
+
     //Nothing can be negative
     //Balance, days, and price have to be greater than 0
     //Fee, tax, and percentage can = 0

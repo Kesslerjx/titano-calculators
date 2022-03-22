@@ -1,5 +1,5 @@
 body {
-    margin: 100px;
+    margin: 10vw;
 }
 
 .values-div {
@@ -34,9 +34,10 @@ body {
     text-align: end;
 }
 
-#submit {
+#submit, #reset {
     width: 200px;
     text-align: center;
+    flex-wrap: wrap;
 }
 
 #results {
