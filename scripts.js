@@ -76,10 +76,11 @@ function submit() {
 
         //Set results summary
         //Round to 2 decimal points
-        totalBalanceParagraph.textContent = totalBalance.toFixed(2);
-        totalValueParagraph.textContent = `$${(totalBalance * parseFloat(price.value)).toFixed(2)}`;
-        totalCollectedParagraph.textContent = totalCollected.toFixed(2);
-        collectedValueParagraph.textContent = `$${collectedValue.toFixed(2)}`;
+        //Use localeString to add commas to large numbers
+        totalBalanceParagraph.textContent = parseFloat(totalBalance.toFixed(2)).toLocaleString('en');
+        totalValueParagraph.textContent = `$${parseFloat((totalBalance * parseFloat(price.value)).toFixed(2)).toLocaleString('en')}`;
+        totalCollectedParagraph.textContent = parseFloat(totalCollected.toFixed(2)).toLocaleString('en');
+        collectedValueParagraph.textContent = `$${parseFloat(collectedValue.toFixed(2)).toLocaleString('en')}`;
 
     }
 }
