@@ -6,6 +6,12 @@ const fee = document.querySelector('#fee');
 const tax = document.querySelector('#tax');
 const percentage = document.querySelector('#percentage');
 
+//Get summary paragraphs
+const totalBalance = document.querySelector('#total-balance');
+const totalValue = document.querySelector('#total-value');
+const totalCollected = document.querySelector('#total-collected');
+const collectedValue = document.querySelector('#collected-value');
+
 //Create value variables
 let balanceValue = parseInt(balance.value);
 let daysValue = parseInt(days.value);
@@ -22,8 +28,9 @@ submitButton.addEventListener('click', submit);
 const resetButton = document.querySelector('#reset');
 resetButton.addEventListener('click', reset);
 
-
+////////////////
 /* FUNCTIONS */
+///////////////
 
 function submit() {
     console.log("User is attempting to submit their form");
