@@ -75,10 +75,11 @@ function submit() {
         }
 
         //Set results summary
-        totalBalanceParagraph.textContent = totalBalance;
-        totalValueParagraph.textContent = (totalBalance * parseFloat(price.value));
-        totalCollectedParagraph.textContent = totalCollected;
-        collectedValueParagraph.textContent = collectedValue;
+        //Round to 2 decimal points
+        totalBalanceParagraph.textContent = totalBalance.toFixed(2);
+        totalValueParagraph.textContent = `$${(totalBalance * parseFloat(price.value)).toFixed(2)}`;
+        totalCollectedParagraph.textContent = totalCollected.toFixed(2);
+        collectedValueParagraph.textContent = `$${collectedValue.toFixed(2)}`;
 
     }
 }
