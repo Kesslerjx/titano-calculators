@@ -14,14 +14,6 @@ const totalValueParagraph = document.querySelector('#total-value');
 const totalCollectedParagraph = document.querySelector('#total-collected');
 const collectedValueParagraph = document.querySelector('#collected-value');
 
-//Create value variables
-let balanceValue = parseInt(balance.value);
-let daysValue = parseInt(days.value);
-let priceValue = parseInt(price.value);
-let feeValue = parseInt(fee.value);
-let taxValue = parseInt(tax.value);
-let percentageValue = parseInt(percentage.value);
-
 //Setup submit button
 const submitButton = document.querySelector('#submit');
 submitButton.addEventListener('click', submit);
@@ -50,30 +42,41 @@ function submit() {
         let collectedValue = 0;
         
         //Loop through the number of days
-        for(i=0; i<daysValue; i++) {
+        for(i=0; i<parseInt(days.value); i++) {
+
+            console.log("Starting loop");
+            console.log("Titano balance is " + totalBalance);
 
             //Get the amount of interest that will be earned during the day
-            let dayInterest = balanceValue * RATE;
+            let dayInterest = totalBalance * RATE;
+
+            console.log("Interest earned for the day is " + dayInterest);
 
             //Get the amount that the user will collect based on the percentage value they set
-            let toCollect = dayInterest * (percentageValue / 100);
+            let toCollect = dayInterest * (parseFloat(percentage.value) / 100);
+
+            console.log("User will collect " + toCollect);
             
             //Add interest - collected to the total balance
-             totalBalance += (dayInterest - toCollect);
+            totalBalance += (dayInterest - toCollect);
+
+            console.log("New titano balance is " + totalBalance);
 
             //Remove the sell fee from the amount collected
-            toCollect = toCollect - (toCollect * (feeValue / 100));
+            toCollect = toCollect - (toCollect * (parseFloat(fee.value) / 100));
+
+            console.log("User will collect " + toCollect + " once the fee has been removed");
 
             //Add collected to the total value
             totalCollected += toCollect;
 
             //Update collected value
-            collectedValue += (toCollect * priceValue)
+            collectedValue += (toCollect * parseFloat(price.value));
         }
 
         //Set results summary
         totalBalanceParagraph.textContent = totalBalance;
-        totalValueParagraph.textContent = (totalBalance * priceValue);
+        totalValueParagraph.textContent = (totalBalance * parseFloat(price.value));
         totalCollectedParagraph.textContent = totalCollected;
         collectedValueParagraph.textContent = collectedValue;
 
@@ -91,12 +94,12 @@ function checkInputs() {
     //Balance, days, and price have to be greater than 0
     //Fee, tax, and percentage can = 0
     //All have to be typeof number
-    if((typeof balanceValue == "number" && balanceValue > 0) &&
-        (typeof daysValue == "number" && daysValue > 0) &&
-        (typeof priceValue == "number" && priceValue > 0) &&
-        (typeof feeValue == "number" && feeValue >= 0) &&
-        (typeof taxValue == "number" && taxValue >= 0) &&
-        (typeof percentageValue == "number" && percentageValue >= 0)) {
+    if((typeof parseFloat(balance.value) == "number" && parseFloat(balance.value) > 0) &&
+        (typeof parseFloat(days.value) == "number" && parseFloat(days.value) > 0) &&
+        (typeof parseFloat(price.value) == "number" && parseFloat(price.value) > 0) &&
+        (typeof parseFloat(fee.value) == "number" && parseFloat(fee.value) >= 0) &&
+        (typeof parseFloat(tax.value) == "number" && parseFloat(tax.value) >= 0) &&
+        (typeof parseFloat(percentage.value) == "number" && parseFloat(percentage.value) >= 0)) {
 
             console.log("Inputs are valid, good for submission")
             return true;
