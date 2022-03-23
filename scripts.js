@@ -1,3 +1,5 @@
+const RATE = 0.019176;
+
 //Get input fields
 const balance = document.querySelector('#balance');
 const days = document.querySelector('#days');
@@ -7,10 +9,10 @@ const tax = document.querySelector('#tax');
 const percentage = document.querySelector('#percentage');
 
 //Get summary paragraphs
-const totalBalance = document.querySelector('#total-balance');
-const totalValue = document.querySelector('#total-value');
-const totalCollected = document.querySelector('#total-collected');
-const collectedValue = document.querySelector('#collected-value');
+const totalBalanceParagraph = document.querySelector('#total-balance');
+const totalValueParagraph = document.querySelector('#total-value');
+const totalCollectedParagraph = document.querySelector('#total-collected');
+const collectedValueParagraph = document.querySelector('#collected-value');
 
 //Create value variables
 let balanceValue = parseInt(balance.value);
@@ -40,7 +42,41 @@ function submit() {
     
     //Only continue if all inputs are valid
     if (checkInputs()) {
+
+        //Variables to be used for calculations
+        let totalBalance = balanceValue;
+        let totalValue = 0;
+        let totalCollected = 0;
+        let collectedValue = 0;
         
+        //Loop through the number of days
+        for(i=0; i<daysValue; i++) {
+
+            //Get the amount of interest that will be earned during the day
+            let dayInterest = balanceValue * RATE;
+
+            //Get the amount that the user will collect based on the percentage value they set
+            let toCollect = dayInterest * (percentageValue / 100);
+            
+            //Add interest - collected to the total balance
+             totalBalance += (dayInterest - toCollect);
+
+            //Remove the sell fee from the amount collected
+            toCollect = toCollect - (toCollect * (feeValue / 100));
+
+            //Add collected to the total value
+            totalCollected += toCollect;
+
+            //Update collected value
+            collectedValue += (toCollect * priceValue)
+        }
+
+        //Set results summary
+        totalBalanceParagraph.textContent = totalBalance;
+        totalValueParagraph.textContent = (totalBalance * priceValue);
+        totalCollectedParagraph.textContent = totalCollected;
+        collectedValueParagraph.textContent = collectedValue;
+
     }
 }
 
