@@ -1,7 +1,14 @@
 const RATE = 0.019176;
+const DAY = "day";
+const WEEK = "week";
+const MONTH = "month";
+const WEEK_MULTIPLIER = 7;
+const MONTH_MULTIPLIER = 30;
 
 //Get input fields
 const balance = document.querySelector('#balance');
+const frequency = document.querySelector('#frequency');
+const frequencyType = document.querySelector('#frequency-type');
 const days = document.querySelector('#days');
 const price = document.querySelector('#price');
 const fee = document.querySelector('#fee');
@@ -40,9 +47,17 @@ function submit() {
         let totalValue = 0;
         let totalCollected = 0;
         let collectedValue = 0;
+
+        //To determine when to sell coins and collect interest
+        let counter = 1;
+        let toCollect = 0;
+        let collectionDay = parseInt(frequency.value) * getMultiplier();
         
         //Loop through the number of days
         for(i=0; i<parseInt(days.value); i++) {
+
+            console.log(counter);
+            console.log(collectionDay);
 
             console.log("Starting loop");
             console.log("Titano balance is " + totalBalance);
@@ -52,26 +67,51 @@ function submit() {
 
             console.log("Interest earned for the day is " + dayInterest);
 
-            //Get the amount that the user will collect based on the percentage value they set
-            let toCollect = dayInterest * (parseFloat(percentage.value) / 100);
+            //Only collect interest based on the collectionDay
+            //If not, add full interest to titano balance
+            if(counter == collectionDay) {
+                //Add interst to balance
+                totalBalance += dayInterest;
 
-            console.log("User will collect " + toCollect);
-            
-            //Add interest - collected to the total balance
-            totalBalance += (dayInterest - toCollect);
+                //Get interest to the collection
+                toCollect += dayInterest;
 
-            console.log("New titano balance is " + totalBalance);
+                //Get the amount that the user will collect based on the percentage value they set
+                toCollect *= (parseFloat(percentage.value) / 100);
 
-            //Remove the sell fee from the amount collected
-            toCollect = toCollect - (toCollect * (parseFloat(fee.value) / 100));
+                console.log("User will collect (before fee) " + toCollect);
 
-            console.log("User will collect " + toCollect + " once the fee has been removed");
+                //Take collected amount from the totalBalance
+                totalBalance -= toCollect;
 
-            //Add collected to the total value
-            totalCollected += toCollect;
+                console.log("New titano balance is " + totalBalance);
 
-            //Update collected value
-            collectedValue += (toCollect * parseFloat(price.value));
+                //Remove the sell fee from the amount collected
+                toCollect = toCollect - (toCollect * (parseFloat(fee.value) / 100));
+
+                console.log("User will collect (after fee) " + toCollect);
+
+                //Add collected to the total value
+                totalCollected += toCollect;
+
+                //Update collected value
+                collectedValue += (toCollect * parseFloat(price.value));
+
+                //Reset counter
+                counter = 1;
+            } else {
+                //Add interest earned to the amount the user will collect
+                toCollect += dayInterest;
+
+                //Add interst to balance
+                totalBalance += dayInterest;
+
+                console.log("New titano balance is " + totalBalance);
+
+                //Add to counter
+                counter++;
+            }
+
         }
 
         //Set results summary
@@ -97,6 +137,7 @@ function checkInputs() {
     //Fee, tax, and percentage can = 0
     //All have to be typeof number
     if((typeof parseFloat(balance.value) == "number" && parseFloat(balance.value) > 0) &&
+        (typeof parseFloat(frequency.value) == "number" && parseInt(days.value) >= 1) &&
         (typeof parseFloat(days.value) == "number" && parseFloat(days.value) > 0) &&
         (typeof parseFloat(price.value) == "number" && parseFloat(price.value) > 0) &&
         (typeof parseFloat(fee.value) == "number" && parseFloat(fee.value) >= 0) &&
@@ -119,4 +160,15 @@ function parseInputs() {
     feeValue = parseInt(fee.value);
     taxValue = parseInt(tax.value);
     percentageValue = parseInt(percentage.value);
+}
+
+//Returns a multiplier based on what the user has chosen for their frequency type
+function getMultiplier() {
+    if (frequencyType.value == DAY) {
+        return 1;
+    } else if (frequencyType.value == WEEK) {
+        return WEEK_MULTIPLIER;
+    } else {
+        return MONTH_MULTIPLIER;
+    }
 }
