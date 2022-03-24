@@ -5,6 +5,11 @@ body {
     color: white;
 }
 
+.container {
+    padding: 1%;
+    text-align: center;
+}
+
 .values-div {
     display: flex;
     flex-wrap: wrap;
@@ -13,12 +18,11 @@ body {
     border-radius: 10px;
     border-style: solid;
     border-color: black;
-    padding: 1%;
     align-items: stretch;
     justify-content: space-around;
 }
 
-.values-div > div {
+.values-div > div, #results {
     padding: 1%;
 }
 
@@ -96,40 +100,6 @@ body {
 
 /* TAX INFORMATION AND CHILDREN CSS */
 
-#results {
-    margin-top: 20px;
-    border-width: 2px;
-    border-radius: 10px;
-    border-style: solid;
-    border-color: black;
-    min-height: 200px;
-}
-
-#results-summary {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-}
-
-.label-value {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    gap: 10px;
-    padding: 20px;
-}
-
-.summary-p {
-    font-weight: bold;
-    padding: 0;
-    margin: 0;
-}
-
-.label-value p:nth-child(2) {
-    padding: 0;
-    margin: 0;
-}
 
 /* RANDOM */
 

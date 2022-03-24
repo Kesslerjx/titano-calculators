@@ -119,8 +119,8 @@ function submit() {
         }
 
         //Build results summary
-        let summary = `After ${daysValue} days you would have ${parseFloat(totalBalance.toFixed(2)).toLocaleString('en')} Titano which would be worth around $${parseFloat((totalBalance * parseFloat(price.value)).toFixed(2)).toLocaleString('en')}. 
-            You would have swapped ${parseFloat(totalCollected.toFixed(2)).toLocaleString('en')} Titano and pocketed around $${parseFloat(collectedValue.toFixed(2)).toLocaleString('en')}.`;
+        let summary = `After ${daysValue} days you would have ${parseFloat(totalBalance.toFixed(2)).toLocaleString('en')} Titano in your wallet which would be worth around $${parseFloat((totalBalance * parseFloat(price.value)).toFixed(2)).toLocaleString('en')}. 
+            You would have swapped ${parseFloat(totalCollected.toFixed(2)).toLocaleString('en')} Titano and pocketed around $${parseFloat(collectedValue.toFixed(2)).toLocaleString('en')} before taxes.`;
         
         //Set summary
         resultsSummary.textContent = summary;
