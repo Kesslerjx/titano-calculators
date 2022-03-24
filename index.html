@@ -11,49 +11,75 @@
     <div class="container">
 
         <div class="values-div">
-            <div class="input-div">
-                <label for="balance">Titano Balance: </label>
-                <input type="number" id="balance" name="balance" min="0" value="0" step="0.01">
+
+            <div class="titano-information">
+
+                <div class="titano-fields">
+                    <div class="input-div">
+                        <label class="bold" for="balance">Titano Balance: </label>
+                        <input class="input-end" type="number" id="balance" name="balance" min="0" value="0" step="0.01">
+                    </div>
+        
+                    <div class="input-div frequency-div">
+                        <p class="bold">Frequency</p>
+                        <div>
+                            <input class="input-end" type="number" id="frequency" name="frequency" min="0" value="1">
+                            <select name="frequency-type" id="frequency-type">
+                                <option value="day">Day</option>
+                                <option value="week">Week</option>
+                                <option value="Month">Month</option>
+                            </select>
+                        </div>
+                        
+                    </div>
+        
+                    <div class="input-div">
+                        <label class="bold" for="days">Number of Days: </label>
+                        <input class="input-end" type="number" id="days" name="days" min="0" value="1">
+                    </div>
+        
+                    <div class="input-div">
+                        <label class="bold" for="price">Current price: </label>
+                        <input class="input-end" type="number" id="price" name="price" step="0.01">    
+                    </div class="input-div">
+        
+                    <div class="input-div">
+                        <label class="bold" for="fee">Sell Fee: </label>
+                        <input class="input-end" type="number" id="fee" name="fee" value="18" step="0.01">
+                    </div class="input-div">
+        
+                    <div class="input-div">
+                        <label class="bold" for="percentage">Percentage: </label>
+                        <input class="input-end" type="number" id="percentage" name="percentage" value="20" step="0.01">
+                    </div>
+                </div>
+
+                <div class="titano-buttons">
+                    <input class="input-button" type="button" value="Submit" id="submit">
+                    <input class="input-button" type="button" value="Reset" id="reset">
+                </div>
+
             </div>
 
-            <div class="input-div">
-                <p>Frequency</p>
-                <input type="number" id="frequency" name="frequency" min="0" value="1">
-                <select name="frequency-type" id="frequency-type">
-                    <option value="day">Day</option>
-                    <option value="week">Week</option>
-                    <option value="Month">Month</option>
-                </select>
-            </div>
+            <div class="tax-information">
 
-            <div class="input-div">
-                <label for="days">Number of Days: </label>
-                <input type="number" id="days" name="days" min="0" value="1">
-            </div>
+                <div>
+                    <div class="input-div">
+                        <span class="bold">Tax %:</span>
+                        <input class="input-end" type="number" id="tax" name="tax" value="0" step="0.01">
+                    </div>
+    
+                    <input class="input-button" type="button" value="Apply Tax" id="apply-tax">
+                </div>
+                
+                <hr>
 
-            <div class="input-div">
-                <label for="price">Current price: </label>
-                <input type="number" id="price" name="price" step="0.01">    
-            </div class="input-div">
+                <p class="bold">Total Value After Tax</p>
+                <p id="value-after-tax">$0.00</p>
 
-            <div class="input-div">
-                <label for="fee">Sell Fee: </label>
-                <input type="number" id="fee" name="fee" value="18" step="0.01">
-            </div class="input-div">
+                <p class="bold">Collected Value After Tax</p>
+                <p id="collected-value-after-tax">$0.00</p>
 
-            <div class="input-div">
-                <label for="tax">Tax Percentage: </label>
-                <input type="number" id="tax" name="tax" value="0" step="0.01">
-            </div>
-
-            <div class="input-div">
-                <label for="percentage">Percentage: </label>
-                <input type="number" id="percentage" name="percentage" value="20" step="0.01">
-            </div>
-
-            <div class="input-div">
-                <input class="input-button" type="button" value="Submit" id="submit">
-                <input class="input-button" type="button" value="Reset" id="reset">
             </div>
 
         </div>
