@@ -21,6 +21,10 @@ const totalValueParagraph = document.querySelector('#total-value');
 const totalCollectedParagraph = document.querySelector('#total-collected');
 const collectedValueParagraph = document.querySelector('#collected-value');
 
+//Get results
+const resultsDiv = document.querySelector('#results');
+const resultsSummary = document.querySelector('#results-summary');
+
 //Setup submit button
 const submitButton = document.querySelector('#submit');
 submitButton.addEventListener('click', submit);
@@ -114,13 +118,12 @@ function submit() {
 
         }
 
-        //Set results summary
-        //Round to 2 decimal points
-        //Use localeString to add commas to large numbers
-        totalBalanceParagraph.textContent = parseFloat(totalBalance.toFixed(2)).toLocaleString('en');
-        totalValueParagraph.textContent = `$${parseFloat((totalBalance * parseFloat(price.value)).toFixed(2)).toLocaleString('en')}`;
-        totalCollectedParagraph.textContent = parseFloat(totalCollected.toFixed(2)).toLocaleString('en');
-        collectedValueParagraph.textContent = `$${parseFloat(collectedValue.toFixed(2)).toLocaleString('en')}`;
+        //Build results summary
+        let summary = `After ${daysValue} days you would have ${parseFloat(totalBalance.toFixed(2)).toLocaleString('en')} Titano which would be worth around $${parseFloat((totalBalance * parseFloat(price.value)).toFixed(2)).toLocaleString('en')}. 
+            You would have swapped ${parseFloat(totalCollected.toFixed(2)).toLocaleString('en')} Titano and pocketed around $${parseFloat(collectedValue.toFixed(2)).toLocaleString('en')}.`;
+        
+        //Set summary
+        resultsSummary.textContent = summary;
 
     }
 }
@@ -141,7 +144,7 @@ function checkInputs() {
         (typeof parseFloat(days.value) == "number" && parseFloat(days.value) > 0) &&
         (typeof parseFloat(price.value) == "number" && parseFloat(price.value) > 0) &&
         (typeof parseFloat(fee.value) == "number" && parseFloat(fee.value) >= 0) &&
-        (typeof parseFloat(tax.value) == "number" && parseFloat(tax.value) >= 0) &&
+        //(typeof parseFloat(tax.value) == "number" && parseFloat(tax.value) >= 0) &&
         (typeof parseFloat(percentage.value) == "number" && parseFloat(percentage.value) >= 0)) {
 
             console.log("Inputs are valid, good for submission")
@@ -158,7 +161,7 @@ function parseInputs() {
     daysValue = parseInt(days.value);
     priceValue = parseInt(price.value);
     feeValue = parseInt(fee.value);
-    taxValue = parseInt(tax.value);
+    //taxValue = parseInt(tax.value);
     percentageValue = parseInt(percentage.value);
 }
 

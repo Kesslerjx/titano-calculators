@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="./styles.css">
     <script src="./scripts.js" defer></script>
     <title>Daily Profit Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet">
     
 </head>
 <body>
@@ -15,53 +18,24 @@
             <div class="titano-information">
 
                 <div class="titano-fields">
-                    <div class="input-div">
-                        <label class="bold" for="balance">Titano Balance: </label>
-                        <input class="input-end" type="number" id="balance" name="balance" min="0" value="0" step="0.01">
-                    </div>
-        
-                    <div class="input-div frequency-div">
-                        <p class="bold">Frequency</p>
-                        <div>
-                            <input class="input-end" type="number" id="frequency" name="frequency" min="0" value="1">
-                            <select name="frequency-type" id="frequency-type">
-                                <option value="day">Day</option>
-                                <option value="week">Week</option>
-                                <option value="Month">Month</option>
-                            </select>
-                        </div>
-                        
-                    </div>
-        
-                    <div class="input-div">
-                        <label class="bold" for="days">Number of Days: </label>
-                        <input class="input-end" type="number" id="days" name="days" min="0" value="1">
-                    </div>
-        
-                    <div class="input-div">
-                        <label class="bold" for="price">Current price: </label>
-                        <input class="input-end" type="number" id="price" name="price" step="0.01">    
-                    </div class="input-div">
-        
-                    <div class="input-div">
-                        <label class="bold" for="fee">Sell Fee: </label>
-                        <input class="input-end" type="number" id="fee" name="fee" value="18" step="0.01">
-                    </div class="input-div">
-        
-                    <div class="input-div">
-                        <label class="bold" for="percentage">Percentage: </label>
-                        <input class="input-end" type="number" id="percentage" name="percentage" value="20" step="0.01">
-                    </div>
+                    <p>My current <span class="green-color">Titano</span> balance is <span><input class="input-end" type="number" id="balance" name="balance" min="0" value="0" step="0.01">
+                    </span>. I want to collect <span><input class="input-end" type="number" id="percentage" name="percentage" value="20" step="0.01"></span> % of what I earn in interest every 
+                        <span><input class="input-end" type="number" id="frequency" name="frequency" min="0" value="1"> <select name="frequency-type" id="frequency-type">
+                            <option value="day">Day</option>
+                            <option value="week">Week</option>
+                            <option value="Month">Month</option>
+                        </select></span>. The current price of <span class="green-color">Titano</span> is $ <span><input class="input-end" type="number" id="price" name="price" step="0.01"></span>, 
+                        and the current sell fee is <span><input class="input-end" type="number" id="fee" name="fee" value="18" step="0.01"></span> %. Run this for <span><input class="input-end" type="number" id="days" name="days" min="0" value="1"></span> days.</p>
                 </div>
-
+ 
                 <div class="titano-buttons">
-                    <input class="input-button" type="button" value="Submit" id="submit">
-                    <input class="input-button" type="button" value="Reset" id="reset">
+                    <input class="input-button" type="button" value="Show me the money" id="submit">
+                   <!-- <input class="input-button" type="button" value="Reset" id="reset"> --> 
                 </div>
 
             </div>
 
-            <div class="tax-information">
+           <!--  <div class="tax-information">
 
                 <div>
                     <div class="input-div">
@@ -82,9 +56,15 @@
 
             </div>
 
+            -->
+
         </div>
 
         <div id="results">
+
+            <p id="results-summary"> </p>
+
+            <!--
 
             <div id="results-summary">
                 <div class="label-value">
@@ -114,6 +94,8 @@
             <div id="results-days">
 
             </div>
+
+            -->
 
         </div>
 
